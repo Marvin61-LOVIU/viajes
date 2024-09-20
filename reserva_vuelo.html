@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Vuelos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .hidden {
+            display: none;
+        }
+        .back-button {
+            background-color: #f44336;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #e53935;
+        }
+    </style>
+    <script>
+        function mostrarFormulario() {
+            const tipoVuelo = document.getElementById('tipo-vuelo').value;
+            const vueloRedondo = document.getElementById('form-redondo');
+            const vueloSencillo = document.getElementById('form-sencillo');
+
+            if (tipoVuelo === 'redondo') {
+                vueloRedondo.classList.remove('hidden');
+                vueloSencillo.classList.add('hidden');
+            } else if (tipoVuelo === 'sencillo') {
+                vueloSencillo.classList.remove('hidden');
+                vueloRedondo.classList.add('hidden');
+            } else {
+                vueloRedondo.classList.add('hidden');
+                vueloSencillo.classList.add('hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Reservar Vuelo</h2>
+
+    <!-- Selección de tipo de vuelo -->
+    <label for="tipo-vuelo">Selecciona el tipo de vuelo:</label>
+    <select id="tipo-vuelo" onchange="mostrarFormulario()">
+        <option value="">-- Seleccionar --</option>
+        <option value="redondo">Vuelo Redondo</option>
+        <option value="sencillo">Viaje Sencillo</option>
+    </select>
+
+    <!-- Botón para regresar -->
+    <button class="back-button" onclick="window.history.back()">Regresar</button>
+
+    <!-- Formulario para Vuelo Redondo -->
+    <div id="form-redondo" class="hidden">
+        <h3>Vuelo Redondo</h3>
+        <form>
+            <label for="origen-redondo">Origen (ciudad de origen):</label>
+            <input type="text" id="origen-redondo" name="origen-redondo" required>
+
+            <label for="destino-redondo">Seleccionar un destino:</label>
+            <input type="text" id="destino-redondo" name="destino-redondo" required>
+
+            <label for="fecha-salida-redondo">Fecha de salida:</label>
+            <input type="date" id="fecha-salida-redondo" name="fecha-salida-redondo" required>
+
+            <label for="fecha-regreso-redondo">Fecha de regreso:</label>
+            <input type="date" id="fecha-regreso-redondo" name="fecha-regreso-redondo" required>
+
+            <label for="pasajeros-redondo">Número de pasajeros:</label>
+            <input type="number" id="pasajeros-redondo" name="pasajeros-redondo" min="1" required>
+
+            <button type="submit">Reservar Vuelo Redondo</button>
+        </form>
+
+        <!-- Botón para regresar -->
+        <button class="back-button" onclick="window.history.back()">Regresar</button>
+    </div>
+
+    <!-- Formulario para Viaje Sencillo -->
+    <div id="form-sencillo" class="hidden">
+        <h3>Viaje Sencillo</h3>
+        <form>
+            <label for="origen-sencillo">Origen (ciudad de origen):</label>
+            <input type="text" id="origen-sencillo" name="origen-sencillo" required>
+
+            <label for="destino-sencillo">Seleccionar un destino:</label>
+            <input type="text" id="destino-sencillo" name="destino-sencillo" required>
+
+            <label for="fecha-salida-sencillo">Fecha de salida:</label>
+            <input type="date" id="fecha-salida-sencillo" name="fecha-salida-sencillo" required>
+
+            <label for="pasajeros-sencillo">Número de pasajeros:</label>
+            <input type="number" id="pasajeros-sencillo" name="pasajeros-sencillo" min="1" required>
+
+            <button type="submit">Reservar Viaje Sencillo</button>
+        </form>
+
+        <!-- Botón para regresar -->
+        <button class="back-button" onclick="window.history.back()">Regresar</button>
+    </div>
+</div>
+
+</body>
+</html>
